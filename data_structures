@@ -1,0 +1,100 @@
+#list.append()
+#list.extend(iterable)
+#list.insert(i,x)
+#list.remove(i,x), use del list[x:y] to delete slices
+#list.pop([j]) remove the last item
+#list.clear() remove all item equl to del a[:]
+#list.index(x[start[,end]]) return zero-based index in the list of the first item whose value equals to x
+#list.count(x) return the number of times, x appear in the list
+#list.reverse() reverse the element of the list in place
+#list.copy() return a shallow copy of the list, equal to a[:]
+#list.sort() equal to sorted(list, key=, reverse=)
+#EXAMPLES below
+
+fruits = ['durian', 'betik', 'epal', 'betik', 'manggis', 'mangga', 'pelam', 'pisang']
+fruits.append('cempedak')
+print(fruits)
+x = fruits.count('epal')
+print(x)
+x = fruits.count('banana')
+print(x)
+y = fruits.index('betik',2) #indexing betik a starting position 2
+print(y)
+z = fruits.index('betik')
+print(z)
+a = fruits.extend("nangka")
+print(fruits)
+fruits.remove('n')
+print(fruits)
+#fruits.pop(9:13)
+#print(fruits)
+del fruits[9:14]
+print(fruits)
+fruits.sort(reverse=True)
+print(fruits)
+
+b= sorted(fruits, key=len)
+print(b)
+c= fruits.count('betik')
+print(c)
+print(b.pop())
+print(b.pop(1))
+
+##############################################################################
+#using list as stack, last in ; first out
+
+fruits.append('jagung')
+print(fruits)
+print(fruits.pop())
+
+###############################################################################
+#using list as que, first in ; first out
+
+fruits.insert(0, 'keladi')
+print(fruits)
+del fruits[0]
+print(fruits)
+
+#this method is slow, list is not efficient doing this bcoz all other elements have to shift by one
+#so we use collections.deque
+
+from collections import deque
+baris = deque(fruits) #syntax deque([list])
+print(baris)
+print(baris.popleft())
+
+######################################################################################
+#List comprehension creates concise way to create list
+
+squares= []
+for d in range(10):
+    squares.append(d**2)
+
+print(squares)
+
+#OR simply;
+
+square1 = list(map(lambda e: e**2, range(10)))
+print(square1)
+
+#OR simply;
+
+square2 = [f**2 for f in range(10)]
+print(square2)
+
+#another example of list comprehension
+
+g= [(x,y) for x in [1,2,3] for y in [3,1,4] if x!= y]
+#print([(x,y) for x in [1,2,3] for y in [3,1,4] if x!= y])
+print(g)
+
+#similar to ;
+
+g = []
+for x in [1,2,3]:
+    for y in [3,1,4]:
+        if x!=y:
+            g.append((x,y))
+
+print(g)
+

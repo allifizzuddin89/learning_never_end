@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "C:\\Users\\alep\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.enabled": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        "powershell": "pwsh -ExecutionPolicy ByPass -File" }, 
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+
+
+}

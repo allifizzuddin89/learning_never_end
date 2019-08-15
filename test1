@@ -1,0 +1,245 @@
+print("test1")
+print('test2')
+x=3+4
+print(x)
+print("string test")
+nama="john doe"
+umur=30
+makanan="durian"
+print(nama+" suka makan "+makanan)#only can concatenate string,// int, float not possible
+print(f"""\
+    nama        {nama}
+    umur        {umur}
+    """)
+print("test list")
+senarai=[2,4,8,16,32]
+umur=[12,28,30,54]
+print(f"senarai nombor = {senarai}") #fastest way, test calling variable
+print("senarai nombor = %s"%senarai) #old format
+print("senarai nombor = {}".format(senarai)) #latest format
+print("senarai umur = {} dengan senarai = {}".format(umur,senarai))
+print("kita test slicing pulak")
+print("umur[0:3] = ",umur[0:3])
+print("umur[1:3] = ",umur[1:3])
+umur[1]=33
+print(umur)
+print("total length is = {}".format(len(umur)))
+print("slicing dengan remove pulak")
+umur[0]=[]
+print(umur)
+print("total length is = {}".format(len(umur))) 
+umur.append(55)#addition of 55 in the end of list
+print(umur)
+a,b=0,1
+while a<1000: #flow control test
+    print(a, end=",")
+    a,b=b,a+b #fibonacii sequence
+
+###############################################################################
+#test input
+
+x=int(input('\n\n'" Please enter a number : ")) #user shall enter any number
+if x==0:
+    x = "kosong"
+    print(x)
+elif x<0:
+    x="sila bagi nombor positif"
+    print(x)
+elif x==1:
+    x="satu"
+    print(x)
+elif x>0:
+    x="besau sungguh nombor"
+    print(x)
+else:
+    print("bagi je nombor apa-apa")
+
+###########################################################################################
+
+perkataan=['kucing','tingkap','kipas']
+for u in perkataan: #u is the newly assigned variable for kucing, tingkap, kipas
+    print(u,len(u)) #for statement is not meant for arithmetic in python
+
+#hanya pilih certain perkataan sahaja, ada syarat
+print("perkataan =",perkataan)
+print("words slicing iteration")
+for u in perkataan[:]:#kalau pakai perkataan w/o slicing [:], it'll create an infinite list
+    if len(u) <6:
+        perkataan.insert(0,u) #insert(index,object)
+        print(perkataan) #print list
+        print('\nU adalah ='+u) #print u only
+        perkataan.append("lastwords") #beza append dengan insert, insert lebih spesifik
+        print(perkataan)
+
+print("cara nak senaraikan nombor paling senang")
+for i in range(9): #cara nak reiterate the whole sequence
+    print(i)
+
+print("cara nak senaraikan nombor ikut limit")
+for i in range(4,9): #9 tak masuk, akan stop dekat 8
+    print(i)
+
+#combine range() dgn len(), iterate indices of sequence
+print('\n',"combine range dgn len")
+indeksA=['ayah','sayang','maryam','sayangisteri']
+for y in range(len(indeksA)):
+    print(y,indeksA[y])
+
+print('\n',"verify range")
+print(range(10))
+print("mmg kena iterate pakai for loop, takpon pakai list()")
+print("bila pakai list(range(10)) = ",list(range(10)))
+print("cara lagi simple, pakai enumerate() untuk display sequence, combine dengan list utk indices")
+print(list(enumerate(indeksA))) #combine list + enumerate, tak perlu for loop
+print(list(indeksA)) #list creates list from iterables
+print(indeksA) #sama je macam pakai list()
+print("try enumerate ", enumerate(indeksA))
+
+
+####################################################################################################
+#Break and continue statements, and else clauses on loops
+#break below, break out from innermost statement
+print('\n',"test break statement")
+for i in range(2,10):
+    for x in range(2,i):
+        if i % x == 0:
+            print(i," bukan prime number")
+            print(i,"equals ",x,"*",i//x)
+            break #breakout innermost for or while loop, in this case breakout 2nd 'for', return to 1st 'for'
+    else:
+        print(i," is the prime number") # else belong to for loop, not 'if'
+
+for num in range(2,10):
+    if num % 2 ==0:
+        print("Jumpa even number = ", num)
+        continue #continue to next iteration loop
+    print("jumpa odd number = ", num)
+
+#test kalau takde continue statement
+print("test kalau tak pakai continue statement")
+for num in range(2,10):
+    if num % 2 ==0:
+        print("Jumpa even number = ", num)
+    print("jumpa odd number = ", num)
+#memang kena pakai continue, kalau tak 'num' yang sama akan print out odd number
+
+#print("test guna pass")
+#while True:
+#    pass #does nothing untill user interrupt hit ctrl+c
+
+#test defining function
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print(a,end = ' ')
+        a, b = b, a+b
+    print()
+
+print("print out fib define function")
+fib(1000)
+print(fib)
+
+####################################################################################
+#best practice for defining function, inlcude return()
+
+def fib2n(n):
+    result = [] #empty list
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a+b
+    return (result) #return fibonacci series up to n
+
+f100=fib2n(1000)
+f100
+print(f100)
+
+#######################################################################################
+#Arguement Values, define function with multiple arguements
+
+def tanya_je(prompt, retries=4, reminder= "Sila cuba lagi"):
+    while True:
+        ok = input(prompt)
+        if ok in ('y', 'ya', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nope'):
+            return False
+        retries = retries - 1
+        if retries < 0:
+            raise ValueError('invalid user response') #example of exception handling, 2 types of error : syntax & exception
+        print(reminder)
+
+tanya_je('nak quit ke', 2, 'kemon bro')
+
+#local var (inside def ftn) can be changed global and shared between subsequent ftn calls
+def lis_brg(x,y=[]): #list is a mutable object, it can be changed
+    y.append(x)
+    return y
+
+z=lis_brg(134) #call 1
+print(z)
+print(lis_brg(3)) #call 2
+print(lis_brg(90)) #call 2
+
+#commonly, any local variable cannot be changed, example
+
+p1=8
+
+def tempatan(p2,L = None):
+    if L is None:
+        L = []
+    L.append(p2)
+    return L
+
+#defined function also can be called using keywords arguement
+
+def kakaktua(volt, state = "stiff", action = "lari", type = "malaysian green"):
+    print("-- Kakak tua ni takkan ", action, end = '')
+    print("kalau bagi ", volt, "voltan akan merenjatkan. ")
+    print("--Lovely plumage, the", type)
+    print("-- It's ", state, "!")
+
+kakaktua(1000)
+kakaktua(volt = 2000)
+kakaktua(volt = 3400, action = "terbangggg")
+kakaktua(action = "merangkak", volt = 4520)
+kakaktua('iye ke', 'hidup lagi ke', 'lompat katak')
+#kakaktua(volt = 5, 'test1') #error sebab positional arguments follow keywords arguement, patut terbalik
+
+#now we test using container, dict, in class
+print('\n')
+def cheesecake(kekape, *apaje, **kamus ):
+    print("-- Wanna some ", kekape, "?" )
+    print("-- Sorry dah habis semua ", kekape )
+    for arg in apaje:
+        print(arg)
+    print("-" * 40) #separator
+    for perkataan in kamus:
+        print(perkataan, ":", kamus[perkataan]) #supposedly any arguements after *apaje will be stored in **kamus
+
+#try call
+
+cheesecake("kek keju", "Gila cepat habis ", "Biar betul ko ni ", 
+            penjagakedai = "allif izzudin",
+            pelanggan = "maryam azzahra",
+            namakedai = "kedai cheesecake allif dan keluarga")
+
+#lets test if dict is not used
+
+print('\n')
+def cheesecake1(kekape, *apaje, kamus ):
+    print("-- Wanna some ", kekape, "?" )
+    print("-- Sorry dah habis semua ", kekape )
+    for arg in apaje:
+        print(arg)
+    print("-" * 40)
+    for perkataan in kamus:
+        print(perkataan, ":", kamus[perkataan]) #supposedly any arguements after *apaje will be stored in **kamus
+
+#try call
+
+#cheesecake1("kek keju", "Gila cepat habis ", "Biar betul ko ni ", 
+#            penjagakedai = "allif izzudin",
+#            pelanggan = "maryam azzahra",
+#            namakedai = "kedai cheesecake allif dan keluarga")
+#got error unexpected arguement for penjaga kedai and so on, so if want to use list, better declare it as dict as container

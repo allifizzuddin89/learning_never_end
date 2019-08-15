@@ -1,0 +1,62 @@
+print(list(range(2,5)))
+print(list(range(2,2)))
+print('\n',"test break statement")
+for i in range(2,10):
+    for g in range(2,i):
+        if i % g == 0:
+            print(i," bukan prime number")
+            print(i,"equals ",g,"*",i//g)
+            break #breakout innermost for or while loop, in this case breakout 2nd 'for', return to 1st 'for'
+    else:
+        print(i," is the prime number") # else belong to for loop, not 'if'
+        
+
+print('\n',"test continue statement with")
+for w in range(2,10):
+    for x in range(2,w):
+        if w % x == 0:
+            print(w," bukan prime number")
+            print(w,"equals ",x,"*",w//x)
+            continue # continue to next iteration loop
+            
+    else:
+        #print("value of x = ",x)
+        print(w," is the prime number") # else belong to for loop, not 'if'
+
+print('\n',"test continue statement w/o continue")
+for y in range(2,10):
+    for d in range(2,y):
+        if y % d == 0:
+            print(y," bukan prime number")
+            print(y,"equals ",d,"*",y//d)
+            
+            
+    else:
+        #print("value of d = ",d)
+        print(y," is the prime number") # else belong to for loop, not 'if'
+
+z = 10
+
+def func1():
+    global z
+    z = 3
+
+def func2(x,y):
+    global z
+    return x+y+z
+
+func1()
+total = func2(4,5)
+print(total)
+
+def tanya_je(prompt, retries=4, reminder= "Sila cuba lagi"):
+    while True:
+        ok = input(prompt)
+        if ok in ('y', 'ya', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nope'):
+            return False
+        retries = retries - 1
+        if retries < 0:
+            raise ValueError('invalid user response')
+        print(reminder)

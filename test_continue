@@ -1,0 +1,18 @@
+print('\n',"test continue statement with")
+for w in range(2,10):
+    for x in range(2,w):
+        if w % x == 0:
+            print(w," bukan prime number")
+            print(w,"equals ",x,"*",w//x)
+            continue # continue to next iteration loop
+            
+    else:
+        #print("value of x = ",x)
+        print(w," is the prime number") # else belong to for loop, not 'if'
+
+print('\n')
+for num in range(2,10):
+    if num % 2 ==0:
+        print("Jumpa even number = ", num)
+        continue #continue to next iteration loop
+    print("jumpa odd number = ", num)
