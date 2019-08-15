@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\alep\\AppData\\Local\\Programs\\Python\\Python37\\test"
+		},
+		{
+			"name": "learning_never_end",
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\6\\pwsh.exe"
+	}
+}
